@@ -10,7 +10,8 @@ public class Main {
                 .addProduct(new Product("Snikers", 40.0))
                 .addProduct(new Product("Mars", 50.0))
                 .addProduct(new PerishableProduct("milk", 60.0, 3))
-                .addProduct(new Beer("Baltica", 65, 4));
+                .addProduct(new Beer("Baltica", 65, 4))
+                .addProduct(new Discounted("AlpenGold", 70.0, 10.0));
 
         System.out.println(store);
 
@@ -31,6 +32,9 @@ public class Main {
         System.out.println(store);
 
         store.buy("Baltica", 65.0);
+        System.out.println(store);
+
+        store.buy("AlpenGold", 70.0);
         System.out.println(store);
 
     }
