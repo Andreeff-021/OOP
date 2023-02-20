@@ -2,7 +2,7 @@ package seminar_1;
 
 public class Product {
     private String name;
-    private Double price;
+    private double price;
 
     public Product(String name, double price) {
         this.name = name;
