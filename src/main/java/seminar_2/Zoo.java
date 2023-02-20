@@ -1,8 +1,6 @@
 package seminar_2;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Zoo {
@@ -46,6 +44,16 @@ public class Zoo {
         return result;
     }
 
+    public List<Swimable> getSwimable(){
+        List<Swimable> result = new ArrayList<>();
+        for(Animal item : animals){
+            if (item instanceof Swimable){
+                result.add((Swimable) item);
+            }
+        }
+        return result;
+    }
+
     public Runable getWinnerRun(){
         List<Runable> runanimals = getRunable();
         Runable winner = runanimals.get(0);
@@ -62,6 +70,17 @@ public class Zoo {
         Flyable winner = flyanimals.get(0);
         for (Flyable item : flyanimals) {
             if (winner.speedOfFly() < item.speedOfFly()){
+                winner = item;
+            }
+        }
+        return winner;
+    }
+
+    public Swimable getWinnerSwim(){
+        List<Swimable> swimAnimals = getSwimable();
+        Swimable winner = swimAnimals.get(0);
+        for (Swimable item : swimAnimals) {
+            if (winner.speedOfSwim() < item.speedOfSwim()){
                 winner = item;
             }
         }
