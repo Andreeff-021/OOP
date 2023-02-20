@@ -10,6 +10,6 @@ public abstract class Animal implements Sayable{
     public abstract String feed();
 
     public String toString(){
-        return "My nickname is" + nickname;
+        return "My nickname is " + nickname;
     }
 }
