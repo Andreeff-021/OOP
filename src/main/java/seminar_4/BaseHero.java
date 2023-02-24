@@ -2,31 +2,39 @@ package seminar_4;
 
 import java.util.Random;
 
-public abstract class BaseHero<W extends Weapon> {
+public abstract class BaseHero<W extends Weapon, P extends Protection> {
     private int health;
     private String name;
     protected W weapon;
+    protected P protection;
 
-    protected BaseHero(int health, String name, W weapon) {
+    protected BaseHero(int health, String name, W weapon, P protection) {
         this.health = health;
         this.name = name;
         this.weapon = weapon;
+        this.protection = protection;
     }
 
-    public int damageLevel(){
-        Random random = new Random();
-        return random.nextInt(weapon.damage());
-    }
+//    public int hitLevel(){
+//        Random random = new Random();
+//        return random.nextInt(weapon.damage());
+//    }
+//
+//    public boolean hit (BaseHero recipient){
+//        int damage = hitLevel();
+//        return !recipient.reduceHealth(damage);
+//    }
 
     public boolean hit (BaseHero recipient){
-        int damage = damageLevel();
+        int damage = weapon.damage();
         return !recipient.reduceHealth(damage);
     }
 
     public boolean reduceHealth(int damage){
-        health -= damage;
+        health -= damage - protection.protect();
         return health > 0;
     }
+
 
     public int getHealth() {
         return health;
@@ -38,6 +46,10 @@ public abstract class BaseHero<W extends Weapon> {
 
     public W getWeapon() {
         return weapon;
+    }
+
+    public P getProtection() {
+        return protection;
     }
 
     public void setHealth(int health) {
@@ -56,8 +68,7 @@ public abstract class BaseHero<W extends Weapon> {
     public String toString() {
         return "BaseHero{" +
                 "health=" + health +
-                ", name='" + name + '\'' +
-                ", weapon=" + weapon +
+                ", name='" + name +
                 '}';
     }
 }

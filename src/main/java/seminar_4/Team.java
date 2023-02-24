@@ -42,4 +42,14 @@ public class Team<T extends BaseHero> implements Iterable<T>{
         }
         return suDamage;
     }
+
+    public int getMinProtection(){
+        int minProtection = dreamTeam.get(0).getProtection().protect();
+        for (T hero : dreamTeam){
+            if (hero.getProtection().protect() < minProtection){
+                minProtection = hero.getProtection().protect();
+            }
+        }
+        return minProtection;
+    }
 }

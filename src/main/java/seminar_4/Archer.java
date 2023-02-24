@@ -1,8 +1,9 @@
 package seminar_4;
 
-public class Archer extends BaseHero<Ranged>{
-    public Archer(int health, String name, Ranged range) {
-        super(health, name, range);
+public class Archer extends BaseHero<Ranged, Shield>{
+    public Archer(int health, String name, Ranged range, Shield protection) {
+
+        super(health, name, range, protection);
     }
 
 
@@ -14,6 +15,7 @@ public class Archer extends BaseHero<Ranged>{
     public String toString() {
         return "Archer{" +
                 "weapon=" + weapon +
+                ", protection=" + protection +
                 "} " + super.toString();
     }
 }
